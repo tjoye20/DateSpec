@@ -1,0 +1,43 @@
+<h1>Sign Up</h1>
+
+<%= form_for @user do |f| %>
+  <% if @errors.each do |error| %>
+    <section class="errors">
+      <ul>
+          <li><%= error %></li>
+      </ul>
+    </section>
+    <% end %>
+  <% end %>
+
+  <%=f.label :username %>
+  <%=f.text_field :username %>
+
+  <%=f.label :email %>
+  <%=f.text_field :email %>
+
+  <%=f.label :password %>
+  <%=f.password_field :password %>
+
+  <%=f.label :gender %>
+  <%=f.text_field :gender %>
+
+  <%=f.label :gender_seeking %>
+  <%=f.text_field :gender_seeking %>
+
+  <%=f.label :bio %>
+  <%=f.text_field :bio %>
+
+  <%=f.label :question_1 %>
+  <%=f.text_field :question_1 %>
+
+  <%=f.label :question_2 %>
+  <%=f.text_field :question_2 %>
+
+  <%=f.label :question_3 %>
+  <%=f.text_field :question_3 %>
+
+  <%= f.submit("Sign-up") %>
+  <%= link_to("Login", new_session_path)
+
+  <% end %>
