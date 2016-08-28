@@ -11,11 +11,10 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.save
       session[:user_id] = @user.id
-      notice: "Signup successful!"
-      redirect_to users_path
+      redirect_to users_path, notice: "Signup successful!"
     else
       @errors = @user.errors.full_messages
-      redirect_to new_user_path 
+      redirect_to new_user_path
     end
     redirect_to users_path
   end
