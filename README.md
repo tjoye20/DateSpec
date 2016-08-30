@@ -2,7 +2,7 @@
 
 Test-driven dating app help you find your full-stack partner.
 
-NOTE: THIS APP IS STILL IN DEVELOPMENT. Using TDD to develop the app. 
+NOTE: THIS APP IS STILL IN DEVELOPMENT. Using TDD to develop the app.
 
 ### Project Description
 
@@ -33,3 +33,9 @@ Both users have to submit the other interested party's responses before they're 
 ##### To run the RSpec tests
 
     rspec spec
+
+### Future Slices
+
+* Add Github OAuth  
+* Add ActionMailer to email users when someone submits responses to their profile questions.
+* Add UI
