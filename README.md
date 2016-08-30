@@ -1,24 +1,35 @@
-# README
+# DateSpec
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Test-driven dating app help you find your full-stack partner.
 
-Things you may want to cover:
+NOTE: THIS APP IS STILL IN DEVELOPMENT. Using TDD to develop the app. 
 
-* Ruby version
+### Project Description
 
-* System dependencies
+This app allows students and mentors to collaborate on times to mentor each other and change the world.  
 
-* Configuration
+### Installation
+To install the app to your local computer run
 
-* Database creation
+    git clone https://github.com/tjoye20/DateSpec-Rails.git
 
-* Database initialization
+##### Install the necessary gems
 
-* How to run the test suite
+    bundle install
 
-* Services (job queues, cache servers, search engines, etc.)
+##### Create and migrate your database
 
-* Deployment instructions
+    rake db:create
+    rake db:migrate
 
-* ...
+### How To Use
+
+Create your dating profile by signing up. Once signed up, you'll see a list of users that match your gender preference, and you can browse by bio and profile questions.
+
+Submitting a response to a user's profile questions sends them an email notification, meaning you'll also be notified if they decide they're interested in you and answer your questions.
+
+Both users have to submit the other interested party's responses before they're allowed to chat with each other.
+
+##### To run the RSpec tests
+
+    rspec spec
