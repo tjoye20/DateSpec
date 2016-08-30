@@ -1,6 +1,6 @@
 # DateSpec
 
-Test-driven dating app help you find your full-stack partner.
+Test-driven dating app to help you find your full-stack partner.
 
 NOTE: THIS APP IS STILL IN DEVELOPMENT. Using TDD to develop the app.
 
