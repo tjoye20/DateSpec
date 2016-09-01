@@ -2,12 +2,9 @@ require 'rails_helper'
 
 describe UsersController do
   let!(:users) {User.all}
-
-  #below, at create. use ! to perform that action.
-  let!(:user) {User.create!(username: "tj", email: "test@test.com", password: "password",
+  let!(:user) {User.create(username: "tj", email: "test@test.com", password: "password",
     gender: "male", gender_seeking: "female", bio: "Nigerian. Developer.", question_1: "Test question 1.",
     question_2: "Test question 2.", question_3: "Test question 3.")}
-
   let!(:tasha) {User.create(username: "Tasha", email: "t4tasha@test.com", password: "tashengineer",
     gender: "female", gender_seeking: "male", bio: "Jamaican. Engineer.", question_1: "Test question 1.",
     question_2: "Test question 2.", question_3: "Test question 3.")}
