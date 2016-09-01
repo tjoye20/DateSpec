@@ -42,6 +42,15 @@ describe UsersController do
       end
     end
 
+    describe "GET #edit" do
+      it "responds with status code 200" do
+        get :edit, {id: 1}
+        expect(response).to be_success
+        expect(assigns(:user)).to eq(user)
+        expect(response).to have_http_status 200
+        expect(response).to render_template(:edit)
+      end
+    end
 
 
 
