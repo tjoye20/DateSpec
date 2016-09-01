@@ -6,7 +6,7 @@ NOTE: THIS APP IS STILL IN DEVELOPMENT. Using TDD to develop the app.
 
 ### Project Description
 
-This app allows students and mentors to collaborate on times to mentor each other and change the world.  
+This app uses "tests" to help you determine if you want to engage with potential suitors, by allowing you to chat with them only if you approve of their responses to the questions on your profile page. Note: both users have to approve of each other's responses before they can chat with each other.
 
 ### Installation
 To install the app to your local computer run
@@ -19,8 +19,16 @@ To install the app to your local computer run
 
 ##### Create and migrate your database
 
-    rake db:create
-    rake db:migrate
+    bundle exec rake db:create
+    bundle exec rake db:migrate
+
+##### To run the RSpec tests
+
+    bundle exec rspec spec
+
+##### To launch the app
+
+    rails s
 
 ### How To Use
 
@@ -30,12 +38,10 @@ Submitting a response to a user's profile questions sends them an email notifica
 
 Both users have to submit the other interested party's responses before they're allowed to chat with each other.
 
-##### To run the RSpec tests
-
-    rspec spec
-
 ### Future Slices
 
-* Add Github OAuth  
-* Add ActionMailer to email users when someone submits responses to their profile questions.
-* Add UI
+* Add Github OAuth.
+* Add Cloudinary so users can upload photos.
+* Add ActionMailer to email users when someone submits. responses to their profile questions.
+* Add UI using Refills.
+* Add chat feature.

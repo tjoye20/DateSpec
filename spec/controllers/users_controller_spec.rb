@@ -89,7 +89,7 @@ describe UsersController do
     end
 
     describe "DELETE #destroy" do
-      it "logs you out, clears out the session, and sets user's active to false" do
+      it "logs out user, clears the session, and sets active to false" do
         delete :destroy, {id: tasha.id}
         expect(session[:user_id]).to eq nil
         expect(assigns(:tasha)).to eq nil
