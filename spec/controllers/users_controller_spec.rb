@@ -65,11 +65,9 @@ describe UsersController do
         end
 
         it "responds with status code 302" do
-          post :create, params
+          expect{post(:create, params)}.to change(User, :count).by(1)
           expect(response).to have_http_status 302
           expect(session[:user_id]).to eq(User.last.id)
-          #doesn't work b/c I forgot to add database cleaner
-          # expect{post(:create, params)}.to change(User, :count).by(1)
           expect(flash[:notice]).to eq("Signup successful!")
           expect(response).to redirect_to users_path
         end
@@ -82,7 +80,6 @@ describe UsersController do
         it "responds with status code 200" do
           post :create, params
           expect(response).to have_http_status 200
-          expect{ post(:create, params)}.to change(User, :count).by(0)
           expect(response).to render_template(:new)
         end
       end
