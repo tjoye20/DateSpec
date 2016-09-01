@@ -1,6 +1,9 @@
+require 'pry'
 class UsersController < ApplicationController
+
   def index
-    @users = User.all
+    @users = User.where.not(id: current_user.id)
+    @users = User.where(gender: current_user.gender_seeking)
   end
 
   def new
@@ -14,25 +17,29 @@ class UsersController < ApplicationController
       redirect_to users_path, notice: "Signup successful!"
     else
       @errors = @user.errors.full_messages
-      redirect_to new_user_path
+      render :new
     end
-    redirect_to users_path
   end
 
   def show
-
+    @user = User.find(params[:id])
   end
 
   def edit
-
+    @user = User.find(params[:id])
   end
 
   def update
-
+    @user = User.find(current_user.id)
+    @user.update_attributes(params[:user])
+    redirect_to user_path(@user.id)
   end
 
   def destroy
-
+    @user = User.find(params[:id])
+    @user.active = false
+    session[:user_id] = nil
+    redirect_to root_path
   end
 
   private

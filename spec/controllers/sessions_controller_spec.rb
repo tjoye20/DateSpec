@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pry'
 
 describe SessionsController do
   let!(:user) {User.create(username: "tj", email: "test@test.com", password: "password",
