@@ -1,6 +1,9 @@
+require 'pry'
 class UsersController < ApplicationController
+
   def index
-    @users = User.all
+    @users = User.where.not(id: current_user.id)
+    @users = User.where(gender: current_user.gender_seeking)
   end
 
   def new
@@ -20,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def show
-
+    @user = User.find(params[:id])
   end
 
   def edit
