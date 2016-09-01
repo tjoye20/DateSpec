@@ -38,7 +38,7 @@ describe UsersController do
 
     describe "GET #show" do
       it "responds with status code 200" do
-        get :show, {id: 1}
+        get :show, {id: user.id}
         expect(response).to be_success
         expect(assigns(:user)).to eq(user)
         expect(response).to have_http_status 200
@@ -48,7 +48,7 @@ describe UsersController do
 
     describe "GET #edit" do
       it "responds with status code 200" do
-        get :edit, {id: 1}
+        get :edit, {id: user.id}
         expect(response).to be_success
         expect(assigns(:user)).to eq(user)
         expect(response).to have_http_status 200
@@ -86,7 +86,15 @@ describe UsersController do
           expect(response).to render_template(:new)
         end
       end
+    end
 
+    describe "DELETE #destroy" do
+      it "logs you out, clears out the session, and sets user's active to false" do
+        delete :destroy, {id: tasha.id}
+        expect(session[:user_id]).to eq nil
+        expect(assigns(:tasha)).to eq nil
+        expect(response).to redirect_to root_path
+      end
     end
 
 end
