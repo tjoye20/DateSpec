@@ -82,6 +82,23 @@ describe UsersController do
       end
     end
 
+    describe "PUT #update" do
+      let :params do
+        {username: "tj", email: "test@test.com", password_digest: "password",
+          gender: "male", gender_seeking: "female", bio: "American, I love dancing!", question_1: "Test question 1.",
+          question_2: "Test question 2.", question_3: "Test question 3."}
+      end
+      before(:each) do
+        put :update, id: user.id, user: params
+        user.reload
+      end
+      it "updates the specified user's attributes" do
+        expect(response).to have_http_status 302
+        expect(user.bio).to eq params[:bio]
+        expect(response).to redirect_to user_path(user.id)
+      end
+    end
+
     describe "DELETE #destroy" do
       it "logs out user, clears the session, and sets active to false" do
         delete :destroy, {id: tasha.id}
