@@ -8,11 +8,15 @@ describe UsersController do
     gender: "male", gender_seeking: "female", bio: "Nigerian. Developer.", question_1: "Test question 1.",
     question_2: "Test question 2.", question_3: "Test question 3.")}
 
-  let!(:tasha) {User.create!(username: "Tasha", email: "t4tasha@test.com", password: "tashengineer",
+  let!(:tasha) {User.create(username: "Tasha", email: "t4tasha@test.com", password: "tashengineer",
     gender: "female", gender_seeking: "male", bio: "Jamaican. Engineer.", question_1: "Test question 1.",
     question_2: "Test question 2.", question_3: "Test question 3.")}
 
-    describe "GET #index" do #not passing yet, b/c current_user is undefined
+    before(:each) do
+      session[:user_id] = user.id
+    end
+
+    describe "GET #index" do
       it "responds with status code 200" do
         get :index
         expect(response).to be_success
@@ -52,6 +56,37 @@ describe UsersController do
       end
     end
 
+    describe "POST #create" do
+      context "when valid params are passed" do
+        let :params do
+          {user: {username: "Tom", email: "t4tom@test.com", password_digest: "tomdancer",
+          gender: "male", gender_seeking: "female", bio: "American. Dancer.", question_1: "Test question 1.",
+          question_2: "Test question 2.", question_3: "Test question 3."}}
+        end
 
+        it "responds with status code 302" do
+          post :create, params
+          expect(response).to have_http_status 302
+          expect(session[:user_id]).to eq(User.last.id)
+          #doesn't work b/c I forgot to add database cleaner
+          # expect{post(:create, params)}.to change(User, :count).by(1)
+          expect(flash[:notice]).to eq("Signup successful!")
+          expect(response).to redirect_to users_path
+        end
+      end
+
+      context "when invalid params are passed" do
+        let :params do
+          {user: {username: "Tom", email: "t4tom@test.com"}}
+        end
+        it "responds with status code 200" do
+          post :create, params
+          expect(response).to have_http_status 200
+          expect{ post(:create, params)}.to change(User, :count).by(0)
+          expect(response).to render_template(:new)
+        end
+      end
+
+    end
 
 end
