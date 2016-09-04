@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  protect_from_forgery with: :null_sessions
 
-  helper_method :current_user, :showed_interest(admirer_user_id), :admirers(user)
+  helper_method :current_user, :authenticate_user, :showed_interest(admirer_user_id), :admirers(user)
 
   private
 
@@ -27,4 +28,11 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
+
+  def authenticate_user
+    if !current_user
+      redirect_to login_path, notice: "You must be signed in to do that!"
+    end
+  end
+
 end
