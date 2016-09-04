@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   protect_from_forgery with: :null_sessions
 
-  helper_method :current_user, :authenticate_user, :showed_interest(admirer_user_id), :admirers(user)
+  helper_method :current_user, :authenticate_user, :showed_interest, :admirers
 
   private
 
