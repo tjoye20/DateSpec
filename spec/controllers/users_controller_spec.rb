@@ -9,11 +9,10 @@ describe UsersController do
     gender: "female", gender_seeking: "male", bio: "Jamaican. Engineer.", question_1: "Test question 1.",
     question_2: "Test question 2.", question_3: "Test question 3.")}
 
-    before(:each) do
-      session[:user_id] = user.id
-    end
-
     describe "GET #index" do
+      before(:each) do
+        session[:user_id] = user.id
+      end
       it "responds with status code 200" do
         get :index
         expect(response).to be_success
@@ -78,6 +77,40 @@ describe UsersController do
           post :create, params
           expect(response).to have_http_status 200
           expect(response).to render_template(:new)
+        end
+      end
+    end
+
+    describe "PUT #update" do
+      context "when valid params are passed" do
+        before(:each) do
+          session[:user_id] = user.id
+          put :update, id: user.id, user: params
+          user.reload
+        end
+        let :params do
+          {bio: "American, I love dancing!"}
+        end
+        it "updates the specified user's attributes" do
+          expect(response).to have_http_status 302
+          expect(user.bio).to eq params[:bio]
+          expect(response).to redirect_to user_path(user.id)
+        end
+      end
+
+        context "when invalid params are passed" do
+          before(:each) do
+            session[:user_id] = nil
+            put :update, id: user.id, user: params
+            user.reload
+          end
+          let :params do
+            {bio: "I love dancing! YEAAHH!!!"}
+          end
+          it "responds with a status 302" do
+          expect(response).to have_http_status 302
+          expect(user.bio).to_not eq params[:bio]
+          expect(response).to redirect_to new_session_path
         end
       end
     end

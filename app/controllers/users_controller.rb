@@ -30,9 +30,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(current_user.id)
-    @user.update_attributes(params[:user])
-    redirect_to user_path(@user.id)
+    if current_user
+      @user = User.find(current_user.id)
+      @user.update_attributes(user_params)
+      redirect_to user_path(@user.id)
+    else
+      redirect_to new_session_path, alert: "You must be logged in to make this change."
+    end
   end
 
   def destroy
