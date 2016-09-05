@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   protect_from_forgery with: :null_sessions
 
-  helper_method :current_user, :authenticate_user, :showed_interest, :admirers
+  helper_method :current_user, :authenticate_user, :showed_interest, :their_admirers
 
   private
 
@@ -15,14 +15,21 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def admirers(user)
-    @admirer_users = []
-    user.admirers.each do |admirer|
-      if admirer.user_approved
-        admirer = User.find(admirer.user_id)
-        @admirer_users << admirer
+  def their_timeline
+    array_of_users = []
+    users = User.where.not(id: current_user.id)
+    users = users.where(gender: current_user.gender_seeking)
+  end
+
+  def their_admirers
+    array_of_admirers = []
+    all = Admirer.where(user_id: current_user.id)
+    all.each do |admirers|
+      if admirers.user_approved
+        array_of_admirers << admirers
       end
     end
+    return array_of_admirers
   end
 
   def current_user

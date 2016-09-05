@@ -1,0 +1,36 @@
+<section>
+  <section class="navbar">
+    <% if current_user %>
+  <span>Welcome, <%=current_user.username %></span> | <a href="/admirers">My Admirers(<%=their_admirers.length%>)</a> |
+    <a href="/users/<%= current_user.id %>">My Profile</a> |
+    <a href="/logout">Logout</a>
+    <% end %>
+  </section>
+
+  <% if flash[:notice] %>
+    <p>
+      <%= flash[:notice]%>
+    </p>
+  <% end %>
+
+  <section class="main">
+    <% if @users.length == 0 %>
+      <p>
+        Sorry, there are currently no users in the system. Come back soon!
+      </p>
+    <% else %>
+      <% @users.each do |user| %>
+        <section>
+          <h1>Potential Matches</h1>
+          <h3> <%= user.username %></h3>
+          <p>
+            <%= user.bio %>
+          </p>
+            <section>
+              <a href="/admirers/<%=user.id%>/new">I'm interested!</a>
+            </section>
+          <% end %>
+        </section>
+      <% end %>
+  </section>
+</section>
