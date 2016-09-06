@@ -20,7 +20,9 @@ class ApplicationController < ActionController::Base
     users = []
     their_timeline.each do |user|
       if (Admirer.find_by(user_id: current_user.id, admirer_id: user.id)) && (Admirer.find_by(user_id: user.id, admirer_id: current_user.id))
-        users << user
+        if !(Conversation.find_by(sender_id: current_user.id, recipient_id: user.id)) && !(Conversation.find_by(sender_id: user.id, recipient_id: current_user.id))
+          users << user
+        end
       end
     end
     return users

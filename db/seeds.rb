@@ -53,14 +53,14 @@ user12 = User.create(username: "Lisa", email: "lisa@test.com", password: "passwo
 
 
 Admirer.create(user_id: user.id, admirer_id: user2.id, q1_response: "Test response.", q2_response: "test response 2", q3_response: "rest response 3.")
-Admirer.create(user_id: user2.id, admirer_id: user3.id, q1_response: "Test response.", q2_response: "test response 2", q3_response: "rest response 3.")
+Admirer.create(user_id: user2.id, admirer_id: user.id, q1_response: "Test response.", q2_response: "test response 2", q3_response: "rest response 3.")
 #
-Admirer.create(user_id: user7.id, admirer_id: user9.id, q1_response: "Test response.", q2_response: "test response 2", q3_response: "rest response 3.")
-Admirer.create(user_id: user8.id, admirer_id: user10.id, q1_response: "Test response.", q2_response: "test response 2", q3_response: "rest response 3.")
+Admirer.create(user_id: user.id, admirer_id: user4.id, q1_response: "Test response.", q2_response: "test response 2", q3_response: "rest response 3.")
+Admirer.create(user_id: user4.id, admirer_id: user.id, q1_response: "Test response.", q2_response: "test response 2", q3_response: "rest response 3.")
 #
 
 convo = Conversation.create(sender_id: user.id, recipient_id: user2.id)
-convo2 = Conversation.create(sender_id: user4.id, recipient_id: user.id)
+# convo2 = Conversation.create(sender_id: user4.id, recipient_id: user.id)
 
 Message.create(conversation_id: convo.id, body: "Hey Tasha, wassup?", user_id: convo.sender_id, read: true)
 Message.create(conversation_id: convo.id, body: "Nothing much, wyd?", user_id: convo.recipient_id, read: true)
