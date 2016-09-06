@@ -42,6 +42,5 @@ Both users have to submit the other interested party's responses before they're 
 ### Remaining Backlog Items
 
 * Add Github OAuth.
-* Add ActionMailer to email users when someone submits a responses to their profile questions.
 * Add Cloudinary so users can upload photos.
 * Add UI using Refills.
