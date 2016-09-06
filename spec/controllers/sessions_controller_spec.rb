@@ -15,7 +15,7 @@ describe SessionsController do
       expect(response).to have_http_status 302
       expect(session[:user_id]).to eq(user.id)
       expect(flash[:notice]).to eq("Logged in!")
-      expect(response).to redirect_to root_path
+      expect(response).to redirect_to users_path
     end
   end
 

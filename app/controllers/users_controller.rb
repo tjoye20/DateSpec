@@ -2,8 +2,7 @@ require 'pry'
 class UsersController < ApplicationController
 
   def index
-    @users = User.where.not(id: current_user.id)
-    @users = User.where(gender: current_user.gender_seeking)
+    @users = their_timeline
   end
 
   def new
