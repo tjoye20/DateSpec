@@ -27,8 +27,8 @@ class AdmirersController < ApplicationController
   end
 
   def show
-    @admirer = Admirer.find_by(admirer_id: params[:id])
-    @user = User.find_by(id: current_user.id)
+    @admirer = Admirer.find(params[:id])
+    @user = User.find_by(id: params[:user_id])
   end
 
   def destroy

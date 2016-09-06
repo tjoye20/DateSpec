@@ -1,0 +1,52 @@
+<section>
+  <%= render "layouts/sidebar" %>
+  <%= render "layouts/flash" %>
+
+  <section class="main">
+        <section>
+          <h1>Potential Matches</h1>
+          <h3> <%= @user.username %></h3>
+          <p>
+            <%= @user.bio %>
+          </p>
+
+          <span>Your question:</span>
+          <p>
+            <%= @user.question_1 %>
+          </p>
+
+          <span><%= User.find(@admirer.admirer_id).username%>'s response:</span>
+          <p>
+            <%= @admirer.q1_response %>
+          </p>
+          <span>Your question:</span>
+          <p>
+            <%= @user.question_2 %>
+          </p>
+
+          <span><%= User.find(@admirer.admirer_id).username%>'s response:</span>
+          <p>
+            <%= @admirer.q2_response %>
+          </p>
+
+          <span>Your question:</span>
+          <p>
+            <%= @user.question_3 %>
+          </p>
+
+          <span><%= User.find(@admirer.admirer_id).username%>'s response:</span>
+          <p>
+            <%= @admirer.q3_response %>
+          </p>
+          <section>
+            <a href="<%=new_user_admirer_path(current_user.id)%>">I'm interested!</a>
+            <form action="<%=user_admirer_path(current_user.id, @admirer.id)%>" method="post" onclick="return confirm('Are you sure you want to remove this Admirer?')">
+              <input type='hidden' name="_method" value="DELETE" />
+              <button type="submit">Not Interested</button>
+            </form>
+            <a href="<%= user_admirers_path(current_user.id)%>>Back to Admirers..</a>
+          </section>
+        </section>
+  </section>
+
+</section>
