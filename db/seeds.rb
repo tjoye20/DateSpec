@@ -58,6 +58,14 @@ Admirer.create(user_id: user2.id, admirer_id: user3.id, q1_response: "Test respo
 Admirer.create(user_id: user7.id, admirer_id: user9.id, q1_response: "Test response.", q2_response: "test response 2", q3_response: "rest response 3.")
 Admirer.create(user_id: user8.id, admirer_id: user10.id, q1_response: "Test response.", q2_response: "test response 2", q3_response: "rest response 3.")
 #
+
+convo = Conversation.create(sender_id: user.id, recipient_id: user2.id)
+convo2 = Conversation.create(sender_id: user3.id, recipient_id: user.id)
+
+Message.create(conversation_id: convo.id, body: "Hey Tasha, wassup?", user_id: convo.sender_id, read: true)
+Message.create(conversation_id: convo.id, body: "Nothing much, wyd?", user_id: convo.recipient_id, read: true)
+Message.create(conversation_id: convo2.id, body: "Hey Tj, how are you?", user_id: convo2.sender_id, read: true)
+
 # admirer = Admirer.create(user_id: user.id, admirer_id: user2.id, q1_response: , q2_response: , q3_response:)
 # admirer = Admirer.create(user_id: user.id, admirer_id: user2.id, q1_response: , q2_response: , q3_response:)
 # admirer = Admirer.create(user_id: user.id, admirer_id: user2.id, q1_response: , q2_response: , q3_response:)
