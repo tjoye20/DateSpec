@@ -14,10 +14,7 @@ RSpec.describe ConversationsController, type: :controller do
     session[:user_id] = user.id
   end
   let!(:existing_convo) { Conversation.create(sender_id: user.id, recipient_id: user2.id) }
-  let!(:new_convo) { Conversation.new}
   let(:all_convos) {Conversation.all}
-  let(:all_users) {User.all}
-
 
   describe "GET #index" do
     it "responds with status code 200" do
@@ -38,6 +35,7 @@ RSpec.describe ConversationsController, type: :controller do
       it "responds with status code 302" do
         expect{post(:create, params)}.to change(Conversation, :count).by(1)
         expect(response).to have_http_status 302
+        expect(all_convos.length).to eq 2
         expect(response).to redirect_to conversation_messages_path(all_convos.last)
       end
     end
