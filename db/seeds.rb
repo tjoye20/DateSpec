@@ -9,7 +9,7 @@
 # run be rake db:reset whenever you make updates to the seed data
 
 
-user = User.create(username: "tj", email: "test@test.com", password: "password",
+user = User.create(username: "tj", email: "tjoye20@gmail.com", password: "password",
   gender: "male", gender_seeking: "female", bio: "Nigerian. Developer. I like long walks on the beach.", question_1: "Do you want kids?.",
   question_2: "What do you think of the #BlackLivesMatter movement?", question_3: "Are you open to adoption?")
 user2 = User.create(username: "Tasha", email: "t4tasha@test.com", password: "password",

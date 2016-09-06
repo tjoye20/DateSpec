@@ -1,10 +1,18 @@
 <section>
   <%= render "layouts/sidebar" %>
   <%= render "layouts/flash" %>
+<% if @errors %>
+<%  @errors.each do |error| %>
+  <%= error%>
+<% end %>
+<% end %>
 
   <section>
-    <form action="<%=user_admirers_path(current_user.id)%>%>" method="post">
+    <form action="<%=user_admirers_path(@user.id)%>" method="post">
       <h3> <%= @user.username %></h3>
+      <input type="hidden" name="admirer[user_id]" value ="<%= @user.id%>" />
+      <input type="hidden" name="admirer[admirer_id]" value ="<%= current_user.id%>" />
+
       <p>
         <%= @user.bio %>
       </p>

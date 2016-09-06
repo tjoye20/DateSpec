@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  protect_from_forgery with: :null_sessions
+  protect_from_forgery with: :null_session
 
   helper_method :users_approved_to_message, :current_user, :authenticate_user, :showed_interest, :their_admirers,
                 :their_conversations
@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= (User.find(session[:user_id]) if session[:user_id])
   end
 
   def authenticate_user
