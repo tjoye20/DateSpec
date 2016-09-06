@@ -42,8 +42,7 @@ class ApplicationController < ActionController::Base
 
   def their_admirers
     array_of_admirers = []
-    all = Admirer.where(user_id: current_user.id)
-    all.each do |admirers|
+    current_user.admirers.each do |admirers|
       if admirers.user_approved
         array_of_admirers << admirers
       end
