@@ -25,8 +25,8 @@ describe SessionsController do
       end
     it "returns you to the login page" do
       post :create, params
-      expect(flash[:alert]).to eq("Invalid email or password")
-      expect(response).to render_template("sessions/new", "layouts/application")
+      expect(flash[:alert]).to eq("Invalid email or password.")
+      expect(response).to redirect_to new_session_path
     end
   end
 

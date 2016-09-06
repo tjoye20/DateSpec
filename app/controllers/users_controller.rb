@@ -2,7 +2,12 @@ require 'pry'
 class UsersController < ApplicationController
 
   def index
-    @users = their_timeline
+    if current_user
+      @users = their_timeline
+    else
+      flash[:alert] = "You must be logged in to do that."
+      render :new
+    end
   end
 
   def new
@@ -16,7 +21,7 @@ class UsersController < ApplicationController
       redirect_to users_path, notice: "Signup successful!"
     else
       @errors = @user.errors.full_messages
-      render :new
+      redirect_to new_user_path, notice: "You must be a registered user to do that."
     end
   end
 
@@ -47,7 +52,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :email, :password_digest, :gender,
+    params.require(:user).permit(:username, :email, :password, :gender,
      :gender_seeking, :bio, :question_1, :question_2, :question_3)
   end
 end

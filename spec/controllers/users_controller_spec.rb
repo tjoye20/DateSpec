@@ -55,7 +55,7 @@ describe UsersController do
     describe "POST #create" do
       context "when valid params are passed" do
         let :params do
-          {user: {username: "Tom", email: "t4tom@test.com", password_digest: "tomdancer",
+          {user: {username: "Tom", email: "t4tom@test.com", password: "tomdancer",
           gender: "male", gender_seeking: "female", bio: "American. Dancer.", question_1: "Test question 1.",
           question_2: "Test question 2.", question_3: "Test question 3."}}
         end
@@ -75,8 +75,8 @@ describe UsersController do
         end
         it "responds with status code 200" do
           post :create, params
-          expect(response).to have_http_status 200
-          expect(response).to render_template(:new)
+          expect(response).to have_http_status 302
+          expect(response).to redirect_to new_user_path
         end
       end
     end

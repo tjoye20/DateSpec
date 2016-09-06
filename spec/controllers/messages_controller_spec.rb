@@ -35,7 +35,6 @@ RSpec.describe MessagesController, type: :controller do
         expect(response).to be_success
         expect(assigns(:message)).to be_a_new Message
         expect(response).to have_http_status 200
-        expect(response).to render_template(:new)
       end
     end
 

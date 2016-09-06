@@ -1,9 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
   has_many :conversations, :foreign_key => :sender_id
-
-  validates_confirmation_of :password_digest
-  validates_presence_of :password_digest, :on => :create
+  has_many :admirers
+  
   validates_presence_of :email, :gender, :gender_seeking, :bio
   validates_uniqueness_of :email
 

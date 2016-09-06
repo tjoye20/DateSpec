@@ -1,0 +1,5 @@
+<% if @errors %>
+  <%  @errors.each do |error| %>
+    <%= content_tag :p, error %>
+  <% end %>
+<% end %>

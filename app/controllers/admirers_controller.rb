@@ -33,9 +33,10 @@ class AdmirersController < ApplicationController
   end
 
   def destroy
-    @admirer = Admirer.find(params[:id])
-    if params[:user_id] == @admirer.user_id
+    @admirer = current_user.admirers.find_by(admirer_id: params[:id])
+    if @admirer.admirer_id != current_user.id
       @admirer.user_approved = false
+      @admirer.save
       redirect_to user_admirer_path
     else
       flash[:alert] = "You don't have access to make this change."
