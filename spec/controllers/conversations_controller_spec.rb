@@ -13,7 +13,7 @@ RSpec.describe ConversationsController, type: :controller do
   before(:each) do
     session[:user_id] = user.id
   end
-  let!(:existing_convo) { Conversation.create(sender_id: user2.id, recipient_id: user3.id) }
+  let!(:existing_convo) { Conversation.create(sender_id: user.id, recipient_id: user2.id) }
   let!(:new_convo) { Conversation.new}
   let(:all_convos) {Conversation.all}
   let(:all_users) {User.all}
@@ -24,6 +24,8 @@ RSpec.describe ConversationsController, type: :controller do
       get :index
       expect(response).to be_success
       expect(response).to have_http_status 200
+      expect(all_convos.length).to eq 1
+      expect(all_convos).to eq [existing_convo]
       expect(response).to render_template(:index)
     end
   end
@@ -31,7 +33,7 @@ RSpec.describe ConversationsController, type: :controller do
   describe "POST #create" do
     context "when starting a new conversation" do
       let :params do
-        {sender_id: user.id, recipient_id: user2.id}
+        {sender_id: user3.id, recipient_id: user.id}
       end
       it "responds with status code 302" do
         expect{post(:create, params)}.to change(Conversation, :count).by(1)
@@ -42,7 +44,7 @@ RSpec.describe ConversationsController, type: :controller do
 
     context "when a conversation exists already" do
       let :params do
-        {sender_id: user3.id, recipient_id: user2.id}
+        {sender_id: user.id, recipient_id: user2.id}
       end
       it "responds with status code 302" do
         expect{post(:create, params)}.to change(Conversation, :count).by(0)
