@@ -7,8 +7,6 @@
           <h1>Edit Your Profile</h1>
           <h3> <%= @user.username %></h3>
           <%= form_tag(user_path(@user.id), method: "post") do %>
-
-          <!-- <form action="<%=user_path(@user.id)%>" method="post"> -->
             <input type="hidden" name="_method" value="PUT"/>
             <label>Bio:</label><br />
             <input type="textarea" name="user[bio]" value="<%=@user.bio%>" size ="70"/> <br />
