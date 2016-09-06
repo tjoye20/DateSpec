@@ -2,6 +2,6 @@
   <% if current_user %>
 <span>   <a href="<%= user_path(current_user.id) %>">My Profile</a> |
   <a href="<%= user_admirers_path(current_user.id)%>">My Admirers(<%=their_admirers.length%>)</a> |
-  <a href="<%= conversations_path %>">My Conversations(<%=current_user.conversations.count %>)</a>
+  <a href="<%= conversations_path %>">Mailbox(<%=current_user.conversations.count %>)</a>
   <% end %>
 </section>

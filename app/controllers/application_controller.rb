@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   protect_from_forgery with: :null_sessions
 
-  helper_method :current_user, :authenticate_user, :showed_interest, :their_admirers,
+  helper_method :users_approved_to_message, :current_user, :authenticate_user, :showed_interest, :their_admirers,
                 :their_conversations
 
   private
@@ -14,6 +14,16 @@ class ApplicationController < ActionController::Base
     else
       return false
     end
+  end
+
+  def users_approved_to_message
+    users = []
+    their_timeline.each do |user|
+      if (Admirer.find_by(user_id: current_user.id, admirer_id: user.id)) && (Admirer.find_by(user_id: user.id, admirer_id: current_user.id))
+        users << user
+      end
+    end
+    return users
   end
 
   def their_timeline
