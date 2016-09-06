@@ -5,6 +5,12 @@ Rails.application.routes.draw do
     resources :admirers
   end
 
+  # we use a foreign key in the conversations table
+  # to reference our user.
+  resources :conversations do
+    resources :messages
+  end
+
   resources :sessions
   get "/signup", to: "users#new", as: "signup"
   get "/login", to: "sessions#new", as: "login"

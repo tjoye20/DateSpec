@@ -2,11 +2,11 @@ require 'pry'
 class AdmirersController < ApplicationController
 
   def index
-    if current_user && admirers(@user).length > 0
-      @user = User.find_by(id: current_user.id)
+    if current_user && their_admirers.length > 0
+      @admirers = their_admirers
     else
       flash[:notice] = "You currently have no admirers. Check back soon!"
-      redirect back
+      redirect_to users_path
     end
   end
 
@@ -15,7 +15,7 @@ class AdmirersController < ApplicationController
   end
 
   def create
-    @admirer = Admirer.new(params[:admirer])
+    @admirer = Admirer.new(admirer_params)
     @admirer.user_id = params[:user_id]
     @admirer.admirer_id = current_user.id
     if @admirer.save
@@ -32,19 +32,19 @@ class AdmirersController < ApplicationController
   end
 
   def destroy
-    if current_user == @admirer.user_id
-      @admirer = Admirer.find(params[:admirer_id])
+    @admirer = Admirer.find(params[:id])
+    if params[:user_id] == @admirer.user_id
       @admirer.user_approved = false
-      redirect_to admirer_users_path
+      redirect_to user_admirer_path
     else
       flash[:alert] = "You don't have access to make this change."
-      redirect back
+      redirect_to user_admirer_path
     end
   end
 
   private
-  def user_params
-    params.require(:user).permit(:username, :email, :password_digest, :gender,
+  def admirer_params
+    params.require(:admirer).permit(:username, :email, :password_digest, :gender,
      :gender_seeking, :bio, :question_1, :question_2, :question_3)
   end
 end

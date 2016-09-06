@@ -41,24 +41,24 @@ user9 = User.create(username: "Bob", email: "bob@test.com", password: "password"
  gender: "male", gender_seeking: "male", bio: "Jamaican. Engineer. Usain Bolt's cousin..", question_1: "Test question 1.",
  question_2: "Test question 2.", question_3: "Test question 3.")
 user10 = User.create(username: "Liz", email: "liz@test.com", password: "password",
- gender: "female", gender_seeking: "female", bio: "Jamaican. Engineer. Ready to settle down.", question_1: "Test question 1.",
+ gender: "female", gender_seeking: "female", bio: "Ghanian. Accountant. Ready to settle down.", question_1: "Test question 1.",
  question_2: "Test question 2.", question_3: "Test question 3.")
 
 user11 = User.create(username: "Billy", email: "billy@test.com", password: "password",
  gender: "male", gender_seeking: "male", bio: "Jamaican. Engineer. Usain Bolt's cousin..", question_1: "Test question 1.",
  question_2: "Test question 2.", question_3: "Test question 3.")
 user12 = User.create(username: "Lisa", email: "lisa@test.com", password: "password",
- gender: "female", gender_seeking: "female", bio: "Jamaican. Engineer. Ready to settle down.", question_1: "Test question 1.",
+ gender: "female", gender_seeking: "female", bio: "Italian. Resturanteur.", question_1: "Test question 1.",
  question_2: "Test question 2.", question_3: "Test question 3.")
 
 
-admirer = Admirer.create(user_id: user.id, admirer_id: user2.id, q1_response: , q2_response: , q3_response:)
-admirer = Admirer.create(user_id: user2.id, admirer_id: user3.id, q1_response: , q2_response: , q3_response:)
-
-admirer = Admirer.create(user_id: user7.id, admirer_id: user9.id, q1_response: , q2_response: , q3_response:)
-admirer = Admirer.create(user_id: user8.id, admirer_id: user10.id, q1_response: , q2_response: , q3_response:)
-
-admirer = Admirer.create(user_id: user.id, admirer_id: user2.id, q1_response: , q2_response: , q3_response:)
-admirer = Admirer.create(user_id: user.id, admirer_id: user2.id, q1_response: , q2_response: , q3_response:)
-admirer = Admirer.create(user_id: user.id, admirer_id: user2.id, q1_response: , q2_response: , q3_response:)
-admirer = Admirer.create(user_id: user.id, admirer_id: user2.id, q1_response: , q2_response: , q3_response:)
+Admirer.create(user_id: user.id, admirer_id: user2.id, q1_response: "Test response.", q2_response: "test response 2", q3_response: "rest response 3.")
+Admirer.create(user_id: user2.id, admirer_id: user3.id, q1_response: "Test response.", q2_response: "test response 2", q3_response: "rest response 3.")
+#
+Admirer.create(user_id: user7.id, admirer_id: user9.id, q1_response: "Test response.", q2_response: "test response 2", q3_response: "rest response 3.")
+Admirer.create(user_id: user8.id, admirer_id: user10.id, q1_response: "Test response.", q2_response: "test response 2", q3_response: "rest response 3.")
+#
+# admirer = Admirer.create(user_id: user.id, admirer_id: user2.id, q1_response: , q2_response: , q3_response:)
+# admirer = Admirer.create(user_id: user.id, admirer_id: user2.id, q1_response: , q2_response: , q3_response:)
+# admirer = Admirer.create(user_id: user.id, admirer_id: user2.id, q1_response: , q2_response: , q3_response:)
+# admirer = Admirer.create(user_id: user.id, admirer_id: user2.id, q1_response: , q2_response: , q3_response:)
