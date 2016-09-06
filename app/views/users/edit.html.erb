@@ -1,0 +1,31 @@
+<section>
+  <section class="navbar">
+    <% if current_user %>
+    <span>Welcome, <%=current_user.username %></span> | <a href="/users">Home</a> | <a href="/admirers">My Admirers</a> |
+    <a href="/logout">Logout</a>
+    <% end %>
+  </section>
+
+  <section class="main">
+        <section>
+          <h1>Edit Your Profile</h1>
+          <h3> <%= @user.username %></h3>
+          <form action="/users/<%=current_user.id%>" method="post">
+            <input type="hidden" name="_method" value="PUT"/>
+            <label>Bio:</label><br />
+            <input type="textarea" name="user[bio]" value="<%=@user.bio%>" size ="70"/> <br />
+
+            <label>Question 1:</label><br />
+            <input type="textarea" name="user[question_1]" value="<%=@user.question_1%>" size ="70"/> <br />
+
+            <label>Question 2:</label><br />
+            <input type="textarea" name="user[question_2]" value="<%=@user.question_2%>" size ="70"/> <br />
+
+            <label>Question 3:</label><br />
+            <input type="textarea" name="user[question_3]" value="<%=@user.question_3%>" size ="70"/> <br />
+            <button type="submit">Update Profile</button>
+            <a href="/users">Cancel</a>
+          </form>
+        </section>
+  </section>
+</section>
