@@ -1,0 +1,28 @@
+<section>
+  <%= render "layouts/sidebar" %>
+  <%= render "layouts/flash" %>
+
+  <section>
+    <form action="<%=user_admirers_path(current_user.id)%>%>" method="post">
+      <h3> <%= @user.username %></h3>
+      <p>
+        <%= @user.bio %>
+      </p>
+      <p>
+        <%= @user.question_1 %>
+      </p>
+    <input type="textarea" name="admirer[q1_response]" size ="70" required/> <br />
+
+    <p>
+      <%= @user.question_2 %>
+    </p><input type="textarea" name="admirer[q2_response]" size ="70" required/> <br />
+
+    <p>
+      <%= @user.question_3 %>
+    </p><input type="textarea" name="admirer[q3_response]" size ="70" required/> <br />
+
+    <button type="submit">Show Interest</button>
+    <a href="/admirers">Cancel</a>
+    </form>
+  </section>
+</section>

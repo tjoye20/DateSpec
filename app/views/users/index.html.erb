@@ -1,20 +1,8 @@
 <section>
-  <!-- <section class="navbar">
-    <% if current_user %>
-  <span>Welcome, <%=current_user.username %></span> | <a href="/admirers">My Admirers(<%=their_admirers.length%>)</a> |
-    <a href="/users/<%= current_user.id %>">My Profile</a> |
-    <a href="/logout">Logout</a>
-    <% end %>
-  </section> -->
-  <%= render 'layouts/navbar'%>
 
-  <%= render 'layouts/sidebar'%>
+  <%= render "layouts/sidebar" %>
+  <%= render "layouts/flash" %>
 
-  <% if flash[:notice] %>
-    <p>
-      <%= flash[:notice]%>
-    </p>
-  <% end %>
 
   <section class="main">
     <% if @users.length == 0 %>
@@ -30,7 +18,7 @@
             <%= user.bio %>
           </p>
             <section>
-              <a href="/admirers/<%=user.id%>/new">I'm interested!</a>
+              <a href="<%=new_user_admirer_path(user.id)%>">I'm interested!</a>
             </section>
           <% end %>
         </section>
