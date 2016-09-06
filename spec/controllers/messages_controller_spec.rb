@@ -24,7 +24,7 @@ RSpec.describe MessagesController, type: :controller do
         get :index, params
         expect(response).to be_success
         expect(response).to have_http_status 200
-        expect(all_messages).to eq [new_message, message]
+        expect(all_messages).to eq [message, new_message]
         expect(response).to render_template(:index)
       end
     end
