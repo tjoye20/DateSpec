@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  protect_from_forgery with: :null_sessions
+  protect_from_forgery with: :null_session
 
   helper_method :users_approved_to_message, :current_user, :authenticate_user, :showed_interest, :their_admirers,
                 :their_conversations
@@ -32,6 +32,12 @@ class ApplicationController < ActionController::Base
     array_of_users = []
     users = User.where.not(id: current_user.id)
     users = users.where(gender: current_user.gender_seeking)
+    users.each do |user|
+      if !(Admirer.find_by(user_id: user.id, admirer_id: current_user.id))
+        array_of_users << user
+      end
+    end
+    return array_of_users
   end
 
   def their_admirers
@@ -46,7 +52,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= (User.find(session[:user_id]) if session[:user_id])
   end
 
   def authenticate_user

@@ -11,17 +11,20 @@ class AdmirersController < ApplicationController
   end
 
   def new
-    @user = User.find_by(id: params[:user_id])
+    @user = User.find(params[:user_id])
+    @admirer = User.find(current_user.id)
   end
 
   def create
+    @current_user = User.find(params[:admirer][:admirer_id])
     @admirer = Admirer.new(admirer_params)
     @admirer.user_id = params[:user_id]
-    @admirer.admirer_id = current_user.id
+    @admirer.admirer_id = @current_user.id
     if @admirer.save
-      redirect_to admirer_users_path, notice: "Your response has been submitted!"
+      redirect_to users_path, notice: "Your response has been submitted and the user has been notified!"
+      UserMailer.new_admirer_email(User.find(params[:user_id]).username, User.find(params[:user_id]).email).deliver_now
     else
-      @errors = @user.errors.full_messages
+      @errors = @admirer.errors.full_messages
       render :new
     end
   end
@@ -44,7 +47,6 @@ class AdmirersController < ApplicationController
 
   private
   def admirer_params
-    params.require(:admirer).permit(:username, :email, :password_digest, :gender,
-     :gender_seeking, :bio, :question_1, :question_2, :question_3)
+    params.require(:admirer).permit(:user_id, :admirer_id, :q1_response, :q2_response, :q3_response)
   end
 end
