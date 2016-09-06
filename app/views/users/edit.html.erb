@@ -6,7 +6,9 @@
         <section>
           <h1>Edit Your Profile</h1>
           <h3> <%= @user.username %></h3>
-          <form action="<%=user_path(@user.id)%>" method="post">
+          <%= form_tag(user_path(@user.id), method: "post") do %>
+
+          <!-- <form action="<%=user_path(@user.id)%>" method="post"> -->
             <input type="hidden" name="_method" value="PUT"/>
             <label>Bio:</label><br />
             <input type="textarea" name="user[bio]" value="<%=@user.bio%>" size ="70"/> <br />
@@ -20,8 +22,8 @@
             <label>Question 3:</label><br />
             <input type="textarea" name="user[question_3]" value="<%=@user.question_3%>" size ="70"/> <br />
             <button type="submit">Update Profile</button>
-            <a href="<%= users_path%>">Cancel</a>
-          </form>
+            <%= link_to("Cancel", users_path)%>
+            <% end %>
         </section>
   </section>
 </section>
