@@ -29,9 +29,9 @@
             <%= @user.question_3 %>
           </p>
           <section>
-            <a href="/users/<%=current_user.id%>/edit">Edit My Profile</a>
-          </section>
-          <form action="/users/<%=current_user.id%>" method="post" onclick="return confirm('Are you sure you want to deactivate your account?')">
+            <a href="<%=edit_user_path(@user.id)%>">Edit My Profile</a>
+          </section> <br /> <br />
+          <form action="<%=user_path(@user.id)%>" method="post" onclick="return confirm('Are you sure you want to deactivate your account?')">
             <input type="hidden" name="_method" value="DELETE"/>
             <button>Deactivate Account</button>
           </form>
