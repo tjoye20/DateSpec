@@ -2,11 +2,11 @@
 
 Test-driven dating app to help you find your full-stack partner.
 
-NOTE: THIS APP IS STILL IN DEVELOPMENT. Using TDD to develop the app.
+NOTE: THIS APP IS STILL IN DEVELOPMENT. Nevertheless, the basic functionality is complete. Remaining backlog items are below.
 
 ### Project Description
 
-This app uses "tests" to help you determine if you want to engage with potential suitors, by allowing you to chat with them only if you approve of their responses to the questions on your profile page. Note: both users have to approve of each other's responses before they can chat with each other.
+This app uses "tests" to help you determine if you want to engage with potential suitors, by allowing you to chat with them only if both of submitted responses to each other's profile questions.
 
 ### Installation
 To install the app to your local computer run
@@ -21,6 +21,7 @@ To install the app to your local computer run
 
     bundle exec rake db:create
     bundle exec rake db:migrate
+    bundle exec rake db:seed
 
 ##### To run the RSpec tests
 
@@ -38,10 +39,9 @@ Submitting a response to a user's profile questions sends them an email notifica
 
 Both users have to submit the other interested party's responses before they're allowed to chat with each other.
 
-### Future Slices
+### Remaining Backlog Items
 
 * Add Github OAuth.
+* Add ActionMailer to email users when someone submits a responses to their profile questions.
 * Add Cloudinary so users can upload photos.
-* Add ActionMailer to email users when someone submits. responses to their profile questions.
 * Add UI using Refills.
-* Add chat feature.

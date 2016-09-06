@@ -10,9 +10,9 @@
         Sorry, there are currently no users in the system. Come back soon!
       </p>
     <% else %>
+    <section>
+      <h1>Potential Matches</h1>
       <% @users.each do |user| %>
-        <section>
-          <h1>Potential Matches</h1>
           <h3> <%= user.username %></h3>
           <p>
             <%= user.bio %>
