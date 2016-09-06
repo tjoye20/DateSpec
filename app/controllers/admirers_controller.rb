@@ -33,7 +33,7 @@ class AdmirersController < ApplicationController
   end
 
   def destroy
-    @admirer = current_user.admirers.find_by(admirer_id: params[:id])
+    @admirer = Admirer.find(params[:id])
     if @admirer.admirer_id != current_user.id
       @admirer.user_approved = false
       @admirer.save

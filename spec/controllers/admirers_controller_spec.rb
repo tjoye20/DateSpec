@@ -82,7 +82,7 @@ describe AdmirersController do
 
   describe "DELETE #destroy" do
     it "sets user_approved to false" do
-      delete :destroy, user_id: user.id, id: admirer.admirer_id
+      delete :destroy, user_id: user.id, id: admirer.id
       expect(admirer.user_approved).to eq false
       expect(response).to redirect_to user_admirer_path
     end
