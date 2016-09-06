@@ -12,14 +12,12 @@ class AdmirersController < ApplicationController
 
   def new
     @user = User.find(params[:user_id])
-    @admirer = User.find(current_user.id)
   end
 
   def create
-    @current_user = User.find(params[:admirer][:admirer_id])
     @admirer = Admirer.new(admirer_params)
     @admirer.user_id = params[:user_id]
-    @admirer.admirer_id = @current_user.id
+    @admirer.admirer_id = current_user.id
     if @admirer.save
       redirect_to users_path, notice: "Your response has been submitted and the user has been notified!"
       UserMailer.new_admirer_email(User.find(params[:user_id]).username, User.find(params[:user_id]).email).deliver_now
