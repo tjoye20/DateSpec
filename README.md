@@ -11,7 +11,7 @@ This app uses "tests" to help you determine if you want to engage with potential
 ### Installation
 To install the app to your local computer run
 
-    git clone https://github.com/tjoye20/DateSpec-Rails.git
+    git clone https://github.com/tjoye20/DateSpec.git
 
 ##### Install the necessary gems
 
