@@ -64,7 +64,7 @@ convo = Conversation.create(sender_id: user.id, recipient_id: user2.id)
 
 Message.create(conversation_id: convo.id, body: "Hey Tasha, wassup?", user_id: convo.sender_id, read: true)
 Message.create(conversation_id: convo.id, body: "Nothing much, wyd?", user_id: convo.recipient_id, read: true)
-Message.create(conversation_id: convo2.id, body: "Hey Tj, how are you?", user_id: convo2.sender_id, read: true)
+# Message.create(conversation_id: convo2.id, body: "Hey Tj, how are you?", user_id: convo2.sender_id, read: true)
 
 # admirer = Admirer.create(user_id: user.id, admirer_id: user2.id, q1_response: , q2_response: , q3_response:)
 # admirer = Admirer.create(user_id: user.id, admirer_id: user2.id, q1_response: , q2_response: , q3_response:)
