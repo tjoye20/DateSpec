@@ -39,11 +39,9 @@
             <%= @admirer.q3_response %>
           </p>
           <section>
-            <a href="<%=new_user_admirer_path(@user.id)%>">I'm interested!</a>
-
+            <%= link_to("I'm interested!", new_user_admirer_path(@user.id))%>
             <%= button_to "Not Interested", user_admirer_path(@user.id, @admirer.id), method: :delete, data: { confirm: "Are you sure you want to deactivate your account?" } %>
-
-            <a href="<%= user_admirers_path(current_user.id)%>">Back to Admirers..</a>
+            <%= link_to("Back to Admirers", user_admirers_path(current_user.id))%>
           </section>
         </section>
   </section>

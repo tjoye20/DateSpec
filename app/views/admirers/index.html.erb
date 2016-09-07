@@ -1,13 +1,10 @@
 <section>
   <%= render "layouts/sidebar" %>
   <%= render "layouts/flash" %>
-
   <section class="main">
-
         <section>
           <h1>Admirers</h1>
           <% their_admirers.each do |admirer| %>
-          <% if admirer.user_approved%>
           <ul>
             <li>
               <h3> <%= User.find(admirer.admirer_id).username %></h3>
@@ -15,17 +12,12 @@
                 <%= User.find(admirer.admirer_id).bio %>
               </p>
               <section>
-                <a href="<%=user_admirer_path(current_user.id, admirer.id)%>">See Responses</a>
-                <form action="<%=user_admirer_path(current_user.id, admirer.id)%>" method="post" onclick="return confirm('Are you sure you want to remove this Admirer?')">
-                  <input type='hidden' name="_method" value="DELETE" />
-                  <button type="submit">Not Interested</button>
-                </form>
+                <%= link_to("See Responses", user_admirer_path(current_user.id, admirer.id))%>
+                <%= button_to "Not Interested", user_admirer_path(current_user.id, admirer.id), method: :delete, data: { confirm: "Are you sure you want to remove this Admirer?" } %>
               </section>
             </li>
           </ul>
         </section>
-        <% end %>
       <% end %>
   </section>
-
 </section>
