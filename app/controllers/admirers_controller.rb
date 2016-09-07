@@ -28,13 +28,13 @@ class AdmirersController < ApplicationController
   end
 
   def show
-    @admirer = Admirer.find(params[:id])
     @user = User.find_by(id: params[:user_id])
+    @admirer = Admirer.find(params[:id])
   end
 
   def destroy
     @admirer = Admirer.find(params[:id])
-    if @admirer.admirer_id != current_user.id
+    if @admirer.admirer_id != @admirer.user_id
       @admirer.user_approved = false
       @admirer.save
       redirect_to user_admirer_path
