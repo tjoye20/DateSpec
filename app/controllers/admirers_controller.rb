@@ -18,6 +18,9 @@ class AdmirersController < ApplicationController
     @admirer = Admirer.new(admirer_params)
     @admirer.user_id = params[:user_id]
     @admirer.admirer_id = current_user.id
+    @admirer.q1 = current_user.question_1
+    @admirer.q2 = current_user.question_2
+    @admirer.q3 = current_user.question_3
     if @admirer.save
       redirect_to users_path, notice: "Your response has been submitted and the user has been notified!"
       UserMailer.new_admirer_email(User.find(params[:user_id]).username, User.find(params[:user_id]).email).deliver_now
