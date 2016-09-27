@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
 
   def new_admirer_email(username, email)
     @user = username
-    @login_url = "http://localhost:3000/login"
+    @login_url = "https://agile-sierra-37368.herokuapp.com/login"
     mail(to: email, subject: 'DateSpec: New Admirer!')
   end
 end
