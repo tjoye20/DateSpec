@@ -30,6 +30,7 @@ class AdmirersController < ApplicationController
   def show
     @user = User.find_by(id: params[:user_id])
     @admirer = Admirer.find(params[:id])
+    @admirer_name = User.find(@admirer.admirer_id).username
   end
 
   def destroy

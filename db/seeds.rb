@@ -52,11 +52,11 @@ user12 = User.create(username: "Lisa", email: "lisa@test.com", password: "passwo
  question_2: "Test question 2.", question_3: "Test question 3.")
 
 
-Admirer.create(user_id: user.id, admirer_id: user2.id, q1_response: "Test response.", q2_response: "test response 2", q3_response: "rest response 3.")
-Admirer.create(user_id: user2.id, admirer_id: user.id, q1_response: "Test response.", q2_response: "test response 2", q3_response: "rest response 3.")
+Admirer.create(user_id: user.id, admirer_id: user2.id, q1: user.question_1, q1_response: "Test response.", q2: user.question_2, q2_response: "test response 2", q3: user.question_3, q3_response: "rest response 3.")
+Admirer.create(user_id: user2.id, admirer_id: user.id, q1: user2.question_1, q1_response: "Test response.", q2: user2.question_2, q2_response: "test response 2", q3: user2.question_3, q3_response: "rest response 3.")
 #
-Admirer.create(user_id: user.id, admirer_id: user4.id, q1_response: "Test response.", q2_response: "test response 2", q3_response: "rest response 3.")
-Admirer.create(user_id: user4.id, admirer_id: user.id, q1_response: "Test response.", q2_response: "test response 2", q3_response: "rest response 3.")
+Admirer.create(user_id: user.id, admirer_id: user4.id, q1: user.question_1, q1_response: "Test response.", q2: user.question_2, q2_response: "test response 2", q3: user.question_3, q3_response: "rest response 3.")
+Admirer.create(user_id: user4.id, admirer_id: user.id, q1: user4.question_1, q1_response: "Test response.", q2: user4.question_2, q2_response: "test response 2", q3: user4.question_3, q3_response: "rest response 3.")
 #
 
 convo = Conversation.create(sender_id: user.id, recipient_id: user2.id)

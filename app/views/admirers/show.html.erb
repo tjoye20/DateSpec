@@ -12,29 +12,29 @@
 
           <span>Your question:</span>
           <p>
-            <%= @user.question_1 %>
+            <%= @admirer.q1 %>
           </p>
 
-          <span><%= User.find(@admirer.admirer_id).username%>'s response:</span>
+          <span><%= @admirer_name%>'s response:</span>
           <p>
             <%= @admirer.q1_response %>
           </p>
           <span>Your question:</span>
           <p>
-            <%= @user.question_2 %>
+            <%= @admirer.q2 %>
           </p>
 
-          <span><%= User.find(@admirer.admirer_id).username%>'s response:</span>
+          <span><%= @admirer_name%>'s response:</span>
           <p>
             <%= @admirer.q2_response %>
           </p>
 
           <span>Your question:</span>
           <p>
-            <%= @user.question_3 %>
+            <%= @admirer.q3 %>
           </p>
 
-          <span><%= User.find(@admirer.admirer_id).username%>'s response:</span>
+          <span><%= @admirer_name %>'s response:</span>
           <p>
             <%= @admirer.q3_response %>
           </p>
