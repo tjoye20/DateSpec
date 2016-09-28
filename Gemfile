@@ -31,6 +31,7 @@ gem 'pry'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'omniauth'
+gem 'omniauth-github', '~> 1.1', '>= 1.1.2'
 
 
 group :development, :test do
