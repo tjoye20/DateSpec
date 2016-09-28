@@ -2,7 +2,8 @@ class User < ApplicationRecord
   has_secure_password
   has_many :conversations, :foreign_key => :sender_id
   has_many :admirers
-  
+  has_many :indentities
+
   validates_presence_of :email, :gender, :gender_seeking, :bio
   validates_uniqueness_of :email
 

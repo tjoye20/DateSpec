@@ -18,10 +18,13 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.save
       session[:user_id] = @user.id
+
+      save_identity
+
       redirect_to users_path, notice: "Signup successful!"
     else
       @errors = @user.errors.full_messages
-      redirect_to new_user_path, notice: "You must be a registered user to do that."
+      redirect_to new_user_path, notice: "You must be a registered user to do that. #{@errors}"
     end
   end
 
@@ -54,5 +57,12 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :email, :password, :gender,
      :gender_seeking, :bio, :question_1, :question_2, :question_3)
+  end
+
+  def save_identity
+    if session[:auth_hash]
+      Identity.for_auth(session[:auth_hash]).create(user: @user)
+      session.delete(:auth_hash)
+    end
   end
 end
