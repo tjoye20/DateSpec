@@ -3,21 +3,31 @@
         <section>
           <h1>Edit Your Profile</h1>
           <h3> <%= @user.username %></h3>
-            <%= form_tag(user_path(@user.id), method: "post") do %>
+          <%= form_for @user, class: "ui form" do |f| %>
             <input type="hidden" name="_method" value="PUT"/>
-            <label>Bio:</label><br />
-            <input type="textarea" name="user[bio]" value="<%=@user.bio%>" size ="70"/> <br />
 
-            <label>Question 1:</label><br />
-            <input type="textarea" name="user[question_1]" value="<%=@user.question_1%>" size ="70"/> <br />
+            <div class="field">
+              <%=f.label :bio %> <br />
+              <%=f.text_field :bio, size: "60", required: true%><br />
+            </div>
 
-            <label>Question 2:</label><br />
-            <input type="textarea" name="user[question_2]" value="<%=@user.question_2%>" size ="70"/> <br />
+            <div class="field">
+              <%=f.label :question_1 %><br />
+              <%=f.text_field :question_1, size: "60", required: true%> <br />
+            </div>
 
-            <label>Question 3:</label><br />
-            <input type="textarea" name="user[question_3]" value="<%=@user.question_3%>" size ="70"/> <br />
-            <button type="submit">Update Profile</button>
-            <%= link_to("Cancel", users_path)%>
+            <div class="field">
+              <%=f.label :question_2 %><br />
+              <%=f.text_field :question_2, size: "60", required: true%><br />
+            </div>
+
+            <div class="field">
+              <%=f.label :question_3 %><br />
+              <%=f.text_field :question_3, size: "60", required: true%><br />
+            </div>
+
+            <%= f.submit("Update Profile", class: "ui button") %>
+            <%= link_to("Cancel", users_path, class: "ui button")%>
             <% end %>
         </section>
   </section>

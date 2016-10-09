@@ -28,7 +28,8 @@
     <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
   <div>
     <%= f.submit "Add Reply", class: "ui blue labeled submit icon button" %>
+    <%= link_to 'Back to Conversations', conversations_path, class: "ui button" %>
+
   </div>
-  <%= link_to 'Back to Conversations', conversations_path %>
 
 <% end %>
