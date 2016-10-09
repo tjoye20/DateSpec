@@ -2,8 +2,6 @@
 
 Test-driven dating app to help you find your full-stack partner.
 
-NOTE: THIS APP IS STILL IN DEVELOPMENT. Nevertheless, the basic functionality is complete. Remaining backlog items are below.
-
 ### Project Description
 
 This app uses "tests" to help you determine if you want to engage with potential suitors, by allowing you to chat with them only if both of submitted responses to each other's profile questions.
