@@ -6,10 +6,22 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.css' %>
+   <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.js" %>
+   <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" %>
   </head>
 
   <body>
-    <%= render "layouts/navbar" %>
+    <section class="ui middle aligned center aligned grid">
+       <div class="column">
+         <h1>DateSpec</h1>
+         <p>
+           Test-driven dating to help you find your full-stack partner.
+         </p>
+           <%= render "layouts/flash" %>
+       </div>
+     </section>
+   </section>
     <%= yield %>
   </body>
 </html>
