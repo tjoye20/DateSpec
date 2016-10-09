@@ -7,9 +7,6 @@
   <div class="right menu">
       <span class="item">Welcome, <%=current_user.username %></span>
       <a class="item" href="<%=logout_path%>">Logout</a>
-    <% else %>
-      <a class="item" href="<%= login_path %>">Login</a>
-      <a class="item" href="<%= signup_path %>"> Sign-Up</a>
     <% end %>
   </div>
 </div>

@@ -6,7 +6,7 @@
 <% end %>
 
   <section>
-    <%= form_tag(user_admirers_path(@user.id), method: "post") do %>
+    <%= form_tag(user_admirers_path(@user.id), method: "post", class: "ui form") do %>
 
       <h3> <%= @user.username %></h3>
       <input type="hidden" name="admirer[user_id]" value ="<%= @user.id%>" />
@@ -28,8 +28,8 @@
       <%= @user.question_3 %>
     </p><input type="textarea" name="admirer[q3_response]" size ="70" required/> <br />
 
-    <button type="submit">Show Interest</button>
-    <%= link_to("Cancel", users_path)%>
+    <button type="submit" class="ui button">Show Interest</button>
+    <%= link_to("Cancel", users_path, class: "ui button")%>
     <% end %>
   </section>
 </section>
