@@ -1,7 +1,4 @@
 <section>
-  <%= render "layouts/navbar" %>
-  <%= render "layouts/sidebar" %>
-  <%= render "layouts/flash" %>
   <section class="main">
     <% if @users.length == 0 %>
       <p>
@@ -9,17 +6,26 @@
       </p>
     <% else %>
     <section>
-      <h1>Potential Matches</h1>
+      <h3 class="ui center aligned header">Potential Matches</h3>
+      <div class="ui middle aligned divided list">
         <% @users.each do |user| %>
-          <h3> <%= user.username %></h3>
-          <p>
-            <%= user.bio %>
-          </p>
-            <section>
+        <div class="item">
+          <div class="right floated content">
+            <div class="ui button">
               <%= link_to("I'm interested!", new_user_admirer_path(user.id))%>
-            </section>
-          <% end %>
-        </section>
+            </div>
+          </div>
+          <i class="user icon"></i>
+          <div class="content">
+            <%= user.username %>
+          </div>
+          <div class="content">
+            <%= user.bio %>
+          </div>
+        </div>
+        <% end %>
+      </div>
       <% end %>
   </section>
+</section>
 </section>
