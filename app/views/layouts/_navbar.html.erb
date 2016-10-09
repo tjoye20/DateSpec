@@ -1,8 +1,15 @@
-<div class="ui text menu">
+<div class="ui secondary  menu">
   <% if current_user %>
-    <span class="item">Welcome, <%=current_user.username %></span> |
-    <a class="item" href="<%=logout_path%>">Logout</a>
+    <a class="item" href="<%= users_path %>">Home</a>
+    <a class="item" href="<%= user_path(current_user.id) %>">My Profile</a>
+    <a class="item" href="<%= user_admirers_path(current_user.id)%>">My Admirers (<%=their_admirers.length%>)</a>
+    <a class="item" href="<%= conversations_path %>">Mailbox(<%=current_user.conversations.count %>)</a>
+  <div class="right menu">
+      <span class="item">Welcome, <%=current_user.username %></span>
+      <a class="item" href="<%=logout_path%>">Logout</a>
     <% else %>
-    <a class="item" href="<%= login_path %>">Login</a> | <a class="item" href="<%= signup_path %>"> Sign-Up</a>
-  <% end %>
+      <a class="item" href="<%= login_path %>">Login</a>
+      <a class="item" href="<%= signup_path %>"> Sign-Up</a>
+    <% end %>
+  </div>
 </div>

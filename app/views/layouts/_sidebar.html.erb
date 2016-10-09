@@ -1,9 +1,0 @@
-<section class="sidebar">
-  <% if current_user %>
-<span>
-  <a href="<%= users_path %>">Home</a> |
-<a href="<%= user_path(current_user.id) %>">My Profile</a> |
-  <a href="<%= user_admirers_path(current_user.id)%>">My Admirers(<%=their_admirers.length%>)</a> |
-  <a href="<%= conversations_path %>">Mailbox(<%=current_user.conversations.count %>)</a>
-  <% end %>
-</section>

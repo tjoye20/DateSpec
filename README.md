@@ -6,6 +6,12 @@ Test-driven dating app to help you find your full-stack partner.
 
 This app uses "tests" to help you determine if you want to engage with potential suitors, by allowing you to chat with them only if both of submitted responses to each other's profile questions.
 
+#### Example Login Account
+
+Email: tjoye20@gmail.com
+
+Password: password
+
 ### Installation
 To install the app to your local computer run
 
