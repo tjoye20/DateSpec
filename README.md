@@ -43,4 +43,4 @@ Both users have to submit the other interested party's responses before they're 
 
 * Add Github OAuth.
 * Add Cloudinary so users can upload photos.
-* Add UI using Refills.
+* Add UI using Semantic-UI.

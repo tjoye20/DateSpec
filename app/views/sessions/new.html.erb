@@ -1,15 +1,29 @@
-<section>
-  <%= render "layouts/flash" %>
-  <h1>Log in</h1>
-  <%= form_tag sessions_path do %>
-    <p>
-      <%= label_tag :email %><br />
-      <%= text_field_tag :email, params[:email], :required => true %>
-    </p>
-    <p>
-      <%= label_tag :password %><br />
-      <input type="password" name="password" required/>
-    </p>
-    <p class="button"><%= submit_tag "Log in" %></p>
-  <% end %>
-</section>
+<div class="ui middle aligned center aligned grid">
+  <div class="four wide column">
+    <h2 class="ui black image header">
+      <div class="content">
+        Log-in to your account
+      </div>
+    </h2>
+    <%= form_tag sessions_path, class: "ui large form" do %>
+      <div class="ui stacked segment">
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input type="email" name="email" placeholder="E-mail address" required>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input type="password" name="password" placeholder="Password" required>
+          </div>
+        </div>
+        <%= submit_tag "Log in", class: "ui fluid small black submit button" %>
+      </div>
+    <% end %>
+    <div class="ui message">
+      <a href="<%= signup_path %>">Sign Up</a>
+    </div>
+  </div>
+</div>
