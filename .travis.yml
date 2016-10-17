@@ -3,4 +3,5 @@ rbenv:
  - 2.2.5p319
  - jruby
  - rbx-2
+ 
 script: bundle exec rspec spec
