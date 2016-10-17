@@ -31,6 +31,7 @@ gem 'pry'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'omniauth'
+gem 'simplecov', :require => false, :group => :test
 
 
 group :development, :test do
