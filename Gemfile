@@ -32,7 +32,7 @@ gem 'pry'
 # gem 'capistrano-rails', group: :development
 gem 'omniauth'
 gem 'simplecov', :require => false, :group => :test
-
+gem 'travis', '~> 1.8.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
