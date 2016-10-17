@@ -32,6 +32,8 @@ gem 'pry'
 # gem 'capistrano-rails', group: :development
 gem 'omniauth'
 gem 'simplecov', :require => false, :group => :test
+gem 'travis', '~> 1.8.2'
+gem 'rack', '~> 2.0.1'
 
 
 group :development, :test do
