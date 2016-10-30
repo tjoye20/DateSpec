@@ -9,6 +9,11 @@ describe UsersController do
     gender: "female", gender_seeking: "male", bio: "Jamaican. Engineer.", question_1: "Test question 1.",
     question_2: "Test question 2.", question_3: "Test question 3.")}
 
+    before(:each) do
+      session[:user_id] = user.id
+    end
+
+
     describe "GET #index" do
       before(:each) do
         session[:user_id] = user.id
@@ -113,7 +118,7 @@ describe UsersController do
           it "responds with a status 302" do
           expect(response).to have_http_status 302
           expect(user.bio).to_not eq params[:bio]
-          expect(response).to redirect_to new_session_path
+          expect(response).to redirect_to login_path
         end
       end
     end
