@@ -1,9 +1,8 @@
-require 'pry'
 class AdmirersController < ApplicationController
   before_action :authenticate_user
 
   def index
-    if current_user && their_admirers.length > 0
+    if their_admirers.length > 0
       @admirers = their_admirers
     else
       flash[:notice] = "You currently have no admirers. Check back soon!"
@@ -45,7 +44,9 @@ class AdmirersController < ApplicationController
   end
 
   private
+
   def admirer_params
     params.require(:admirer).permit(:user_id, :admirer_id, :q1_response, :q2_response, :q3_response)
   end
+
 end

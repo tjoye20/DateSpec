@@ -2,8 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   protect_from_forgery with: :null_session
 
-  helper_method :users_approved_to_message, :current_user, :showed_interest, :their_admirers,
-                :their_conversations
+  helper_method :users_approved_to_message, :current_user, :showed_interest, :their_admirers
 
   private
 
