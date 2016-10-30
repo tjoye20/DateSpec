@@ -2,19 +2,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   protect_from_forgery with: :null_session
 
-  helper_method :users_approved_to_message, :current_user, :authenticate_user, :showed_interest, :their_admirers,
-                :their_conversations
+  helper_method :users_approved_to_message, :current_user, :their_admirers
 
   private
-
-  def showed_interest(admirer_user_id)
-    admirered_user = Admirer.find_by(user_id: admirer_user_id)
-    if admirered_user && (admirered_user.admirer_id == current_user.id)
-      return true
-    else
-      return false
-    end
-  end
 
   def users_approved_to_message
     users = []

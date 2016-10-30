@@ -1,13 +1,8 @@
-require 'pry'
 class UsersController < ApplicationController
+  before_action :authenticate_user
 
   def index
-    if current_user
-      @users = their_timeline
-    else
-      flash[:alert] = "You must be logged in to do that."
-      render :new
-    end
+    @users = their_timeline
   end
 
   def new
@@ -34,13 +29,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user
-      @user = User.find(current_user.id)
-      @user.update_attributes(user_params)
-      redirect_to user_path(@user.id)
-    else
-      redirect_to new_session_path, alert: "You must be logged in to make this change."
-    end
+    @user = User.find(current_user.id)
+    @user.update_attributes(user_params)
+    redirect_to user_path(@user.id)
   end
 
   def destroy
@@ -51,8 +42,10 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:username, :email, :password, :gender,
      :gender_seeking, :bio, :question_1, :question_2, :question_3)
   end
+
 end
